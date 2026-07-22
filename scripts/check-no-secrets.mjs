@@ -5,9 +5,12 @@ const root = process.cwd();
 const scanRoots = ["src", "public", ".github", "next.config.ts", "vercel.json"];
 const blockedPatterns = [
   /(?:sk|rk|pk)-(?:live|test)?[_-]?[A-Za-z0-9]{20,}/g,
+  /\b\d{6,}:[A-Za-z0-9_-]{30,}\b/g,
   /VERCEL_TOKEN\s*=\s*[^\s$<{][^\s]*/g,
   /(?:API_KEY|SECRET_KEY|ACCESS_TOKEN)\s*=\s*["'][^"']{8,}["']/g,
 ];
+
+const textFilePattern = /(?:\.(?:[cm]?[jt]sx?|json|md|html|css|svg|ya?ml|toml|txt)|(?:^|\/)\.env(?:\..*)?)$/i;
 
 async function walk(path) {
   const info = await stat(path);
@@ -28,6 +31,7 @@ for (const item of scanRoots) {
 
 const findings = [];
 for (const file of targets) {
+  if (!textFilePattern.test(file)) continue;
   const content = await readFile(file, "utf8").catch(() => "");
   for (const pattern of blockedPatterns) {
     const matches = content.match(pattern);

@@ -5,6 +5,9 @@ type LeadBody = {
   name?: string;
   company?: string;
   contact?: string;
+  phone?: string;
+  email?: string;
+  objectType?: string;
   message?: string;
   locale?: string;
   website?: string;
@@ -14,12 +17,21 @@ function clean(value: unknown, max = 1000) {
   return String(value ?? "").trim().slice(0, max);
 }
 
-function fallbackUrl(data: Required<Pick<LeadBody, "name" | "company" | "contact" | "message">>) {
+function fallbackUrl(data: {
+  name: string;
+  company: string;
+  phone: string;
+  email: string;
+  objectType: string;
+  message: string;
+}) {
   const subject = encodeURIComponent("Заявка с сайта Buyursin Technics");
   const body = encodeURIComponent([
     `Имя: ${data.name}`,
     `Компания: ${data.company || "—"}`,
-    `Контакт: ${data.contact}`,
+    `Телефон: ${data.phone}`,
+    `Email: ${data.email || "—"}`,
+    `Тип объекта: ${data.objectType || "—"}`,
     "",
     "Задача:",
     data.message,
@@ -68,23 +80,30 @@ export async function POST(request: Request) {
   const data = {
     name: clean(raw.name, 120),
     company: clean(raw.company, 160),
-    contact: clean(raw.contact, 160),
+    phone: clean(raw.phone || raw.contact, 80),
+    email: clean(raw.email, 160),
+    objectType: clean(raw.objectType, 120),
     message: clean(raw.message, 2000),
     locale: clean(raw.locale, 8),
   };
 
-  if (data.name.length < 2 || data.contact.length < 3 || data.message.length < 3) {
+  if (data.name.length < 2 || data.phone.length < 3 || data.message.length < 3) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 422 });
   }
 
   const text = [
-    "Новая заявка Buyursin Technics",
-    `Имя: ${data.name}`,
-    `Компания: ${data.company || "—"}`,
-    `Контакт: ${data.contact}`,
-    `Язык: ${data.locale || "ru"}`,
+    "🔔 НОВАЯ ЗАЯВКА С САЙТА",
     "",
+    `👤 Имя: ${data.name}`,
+    `🏢 Компания: ${data.company || "—"}`,
+    `📞 Телефон: ${data.phone}`,
+    `✉️ Email: ${data.email || "—"}`,
+    `🏗 Тип объекта: ${data.objectType || "—"}`,
+    "",
+    "📝 Задача:",
     data.message,
+    "",
+    `🌐 Источник: btechnics.uz · ${data.locale || "ru"}`,
   ].join("\n");
 
   try {
@@ -97,8 +116,8 @@ export async function POST(request: Request) {
     // The client receives a safe mail fallback below.
   }
 
-  return NextResponse.json({
-    delivered: false,
-    fallbackUrl: fallbackUrl(data),
-  });
+  return NextResponse.json(
+    { delivered: false, fallbackUrl: fallbackUrl(data) },
+    { status: 503 },
+  );
 }
