@@ -34,8 +34,8 @@ export function HeroStatic() {
             </h1>
             <p className="mt-6 max-w-xl text-base leading-7 text-[#667085] sm:text-lg">{c.hero.text}</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/calculator" className="button-primary">{c.hero.primary}<ArrowRight className="h-4 w-4" /></Link>
-              <Link href="/contacts#lead" className="button-secondary">{locale === "ru" ? "Заказать аудит" : "Audit buyurtma qilish"}<ArrowRight className="h-4 w-4" /></Link>
+              <Link href="/calculator" className="button-primary" data-label={c.hero.primary}><span className="button-label">{c.hero.primary}<ArrowRight className="h-4 w-4" /></span></Link>
+              <Link href="/contacts#lead" className="button-secondary" data-label={locale === "ru" ? "Заказать аудит" : "Audit buyurtma qilish"}><span className="button-label">{locale === "ru" ? "Заказать аудит" : "Audit buyurtma qilish"}<ArrowRight className="h-4 w-4" /></span></Link>
             </div>
           </div>
 

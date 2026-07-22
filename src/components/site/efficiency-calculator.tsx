@@ -160,8 +160,8 @@ export function EfficiencyCalculator({ standalone = false }: { standalone?: bool
               </div>
 
               <div className="mt-7 flex flex-wrap gap-3">
-                <button type="button" onClick={() => setCalculated(true)} disabled={selected.length === 0} className="button-primary disabled:cursor-not-allowed disabled:opacity-50"><Calculator className="h-4 w-4" />{c.calculator.calculate}</button>
-                <button type="button" onClick={reset} className="button-secondary"><RotateCcw className="h-4 w-4" />{locale === "ru" ? "Сбросить" : "Qayta"}</button>
+                <button type="button" onClick={() => setCalculated(true)} disabled={selected.length === 0} className="button-primary disabled:cursor-not-allowed disabled:opacity-50" data-label={c.calculator.calculate}><span className="button-label"><Calculator className="h-4 w-4" />{c.calculator.calculate}</span></button>
+                <button type="button" onClick={reset} className="button-secondary" data-label={locale === "ru" ? "Сбросить" : "Qayta"}><span className="button-label"><RotateCcw className="h-4 w-4" />{locale === "ru" ? "Сбросить" : "Qayta"}</span></button>
               </div>
             </div>
 
@@ -203,7 +203,7 @@ export function EfficiencyCalculator({ standalone = false }: { standalone?: bool
               )}
 
               <div className="mt-5 flex gap-2 rounded-2xl border border-[#e4e7ec] bg-white p-4 text-xs leading-5 text-[#667085]"><Info className="mt-0.5 h-4 w-4 shrink-0 text-[#1769ff]" />{c.calculator.disclaimer}</div>
-              <Link href="/contacts#lead" className="button-primary mt-5 w-full justify-center">{c.calculator.audit}<ArrowRight className="h-4 w-4" /></Link>
+              <Link href="/contacts#lead" className="button-primary mt-5 w-full justify-center" data-label={c.calculator.audit}><span className="button-label">{c.calculator.audit}<ArrowRight className="h-4 w-4" /></span></Link>
             </div>
           </div>
         </div>

@@ -17,6 +17,23 @@ function clean(value: unknown, max = 1000) {
   return String(value ?? "").trim().slice(0, max);
 }
 
+function envValue(name: string) {
+  return String(process.env[name] ?? "").trim().replace(/^(["'])(.*)\1$/, "$2");
+}
+
+function telegramToken() {
+  return envValue("TELEGRAM_BOT_TOKEN")
+    .replace(/^bot/i, "")
+    .replace(/^<|>$/g, "")
+    .trim();
+}
+
+function telegramChatId() {
+  return envValue("TELEGRAM_CHAT_ID")
+    .replace(/^<|>$/g, "")
+    .trim();
+}
+
 function fallbackUrl(data: {
   name: string;
   company: string;
@@ -44,9 +61,11 @@ type DeliveryResult =
   | { ok: false; channel: "telegram" | "webhook"; code: string; status?: number };
 
 async function sendTelegram(text: string): Promise<DeliveryResult> {
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
+  const token = telegramToken();
+  const chatId = telegramChatId();
   if (!token || !chatId) return { ok: false, channel: "telegram", code: "not_configured" };
+  if (!/^\d{6,}:[A-Za-z0-9_-]{20,}$/.test(token)) return { ok: false, channel: "telegram", code: "invalid_token_format" };
+  if (!/^-?\d+$/.test(chatId) && !/^@[A-Za-z0-9_]{5,}$/.test(chatId)) return { ok: false, channel: "telegram", code: "invalid_chat_id" };
 
   try {
     const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
@@ -56,11 +75,29 @@ async function sendTelegram(text: string): Promise<DeliveryResult> {
       cache: "no-store",
       signal: AbortSignal.timeout(9000),
     });
-    if (response.ok) return { ok: true, channel: "telegram" };
+    const result = await response.json().catch(() => null) as {
+      ok?: boolean;
+      description?: string;
+      parameters?: { migrate_to_chat_id?: number };
+    } | null;
+    if (response.ok && result?.ok !== false) return { ok: true, channel: "telegram" };
+    const description = result?.description?.toLowerCase() ?? "";
     return {
       ok: false,
       channel: "telegram",
-      code: response.status === 400 ? "chat_not_found" : response.status === 401 ? "invalid_token" : "telegram_rejected",
+      code: response.status === 401 || response.status === 404
+        ? "invalid_token"
+        : result?.parameters?.migrate_to_chat_id
+          ? "chat_migrated"
+        : description.includes("chat not found") || description.includes("chat_id is empty")
+          ? "chat_not_found"
+          : description.includes("bot was blocked") || response.status === 403
+            ? "bot_blocked"
+            : description.includes("group chat was upgraded")
+              ? "chat_migrated"
+            : response.status === 429
+              ? "rate_limited"
+              : "telegram_rejected",
       status: response.status,
     };
   } catch {
@@ -69,14 +106,14 @@ async function sendTelegram(text: string): Promise<DeliveryResult> {
 }
 
 async function sendWebhook(payload: Record<string, string>): Promise<DeliveryResult> {
-  const url = process.env.LEAD_WEBHOOK_URL;
+  const url = envValue("LEAD_WEBHOOK_URL");
   if (!url) return { ok: false, channel: "webhook", code: "not_configured" };
   try {
     const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        ...(process.env.LEAD_WEBHOOK_TOKEN ? { Authorization: `Bearer ${process.env.LEAD_WEBHOOK_TOKEN}` } : {}),
+        ...(envValue("LEAD_WEBHOOK_TOKEN") ? { Authorization: `Bearer ${envValue("LEAD_WEBHOOK_TOKEN")}` } : {}),
       },
       body: JSON.stringify(payload),
       cache: "no-store",
