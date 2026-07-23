@@ -437,7 +437,7 @@ function ProjectAccordion({ projects, locale = "ru" }: { projects: readonly Port
   const activeTitle = locale === "ru" ? activeProject.title : activeProject.titleUz;
   const labels = locale === "ru"
     ? { region: "Карусель проектов", type: activeProject.type, profile: "Профиль решения", all: "Проекты", next: "Следующий проект", playing: "Автопрокрутка", pause: "Остановить автопрокрутку", play: "Запустить автопрокрутку"}
-    : { region: "Loyihalar karuseli", type: activeProject.typeUz, profile: "Yechim profili", all: "Loyihalar", next: "Keyingi loyiha", playing: "Avto aylantirish", pause: "Avto aylantirishni to‘xtatish", play: "Avto aylantirishni ishga tushirish"};
+    : { region: "Loyihalar karuseli", type: activeProject.typeUz, profile: "Yechim profili", all: "Loyihalar", next: "Keyingi loyiha", playing: "Avto aylantirish", pause: "Avto aylantirishni to‘xtatish", play: "Avto aylantirishni ishga tushirish", visual: " " };
 
   return <div
     className="cinematic-projects"
