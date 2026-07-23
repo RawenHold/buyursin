@@ -13,7 +13,6 @@ import type { ProposalData } from "./types";
 const proposalContacts = {
   phone: "+998 71 205 85 88",
   email: "info@btechnics.uz",
-  website: "btechnics.uz",
 } as const;
 
 async function captureSlides(root: HTMLElement) {

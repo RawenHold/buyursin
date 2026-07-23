@@ -415,9 +415,9 @@ export const siteCopy = {
       title: "To‘liq siklli muhandislik integratori.",
       text: "Muhandislik va past tokli tizimlarni loyihalash, yetkazib berish, montaj qilish, dasturlash, ishga tushirish va ularga xizmat ko‘rsatish.",
       facts: [
-        { value: "15 yil", label: "taqdimotdagi kompaniya tajribasi" },
+        { value: "15 yil", label: "kompaniya tajribasi" },
         { value: "24/7", label: "servis va monitoring" },
-        { value: "ISO", label: "taqdimotda ko‘rsatilgan sertifikatlar" },
+        { value: "ISO", label: "sertifikatlar" },
         { value: "to‘liq sikl", label: "loyihadan ekspluatatsiyagacha" },
       ],
       certifications: ["ISO 9001:2015", "ISO/IEC 27001:2022", "Siemens Solution Partner", "Honeywell va Legrand hamkorlik yechimlari"],
