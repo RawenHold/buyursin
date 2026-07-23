@@ -268,8 +268,15 @@ function UnifiedSystemsShowcase({ locale }: { locale: Locale }) {
     return () => window.clearTimeout(timer);
   }, [active]);
   useEffect(() => {
+    // Only scroll the horizontal tab strip itself on mobile; never scroll the
+    // page. On desktop the tabs are a static grid, so scrollIntoView would
+    // hijack the viewport and trap the user in this section.
+    if (window.innerWidth > 760) return;
     const activeTab = tabsRef.current?.querySelector<HTMLElement>(`[data-system-tab="${active}"]`);
-    activeTab?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    const list = tabsRef.current;
+    if (!activeTab || !list) return;
+    const offset = activeTab.offsetLeft - (list.clientWidth - activeTab.clientWidth) / 2;
+    list.scrollTo({ left: offset, behavior: "smooth" });
   }, [active]);
   const activeSystem = SYSTEMS.find(system => system.slug === active)!;
   const ActiveSystemIcon = activeSystem.icon;
@@ -283,10 +290,7 @@ function UnifiedSystemsShowcase({ locale }: { locale: Locale }) {
     </button>;
   };
   return <div className="unified-showcase">
-    <div className="unified-tabs-shell">
-      <div ref={tabsRef} className="unified-tabs" role="tablist" aria-label={ui.systemEyebrow}>{SYSTEMS.map(({slug,icon:Icon}) => <button type="button" role="tab" data-system-tab={slug} aria-selected={active === slug} key={slug} className={active === slug ? "active" : ""} onClick={() => setActive(slug)}><Icon />{systemName(slug)}</button>)}</div>
-      <div className="unified-tabs-progress" aria-hidden="true">{SYSTEMS.map(system => <span key={system.slug} className={active === system.slug ? "active" : ""} />)}</div>
-    </div>
+    <div ref={tabsRef} className="unified-tabs" role="tablist" aria-label={ui.systemEyebrow} hidden>{SYSTEMS.map(({slug}) => <button type="button" role="tab" data-system-tab={slug} aria-selected={active === slug} key={slug} className={active === slug ? "active" : ""} onClick={() => setActive(slug)}>{systemName(slug)}</button>)}</div>
     <div className="unified-map">
       <div className="unified-side unified-left">{SYSTEMS.slice(0,2).map(system => <Card key={system.slug} {...system} />)}</div>
       <div className="unified-center"><BmsDashboard active={active} locale={locale} /><div className="unified-live-badge"><ActiveSystemIcon />{ui.scenario}: <b>{systemName(active)}</b></div></div>

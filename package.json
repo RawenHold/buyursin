@@ -12,6 +12,7 @@
     "check": "npm run check:secrets && npm run lint && npm run typecheck && npm run build"
   },
   "dependencies": {
+    "@iconify/react": "^6.0.2",
     "clsx": "^2.1.1",
     "framer-motion": "^12.42.2",
     "html-to-image": "^1.11.13",
