@@ -34,7 +34,7 @@ export const siteCopy = {
       metrics: [
         { value: "до 30%", label: "потенциал снижения энергозатрат" },
         { value: "24/7", label: "контроль инженерных систем" },
-        { value: "1–3 года", label: "ориентир окупаемости по данным презентации" },
+        { value: "1–3 года", label: "ориентир окупаемости" },
         { value: "15 лет", label: "опыт компании" },
       ],
     },
@@ -191,7 +191,7 @@ export const siteCopy = {
     },
     projects: {
       eyebrow: "Опыт",
-      title: "Объекты и бренды из презентации компании.",
+      title: "Объекты и бренды компании.",
       subtitle: "Перед публикацией детальных кейсов подтверждаем цифры, состав работ и право использования материалов.",
       clients: ["Centris Towers", "Sberbank City", "BMW", "Sheraton", "Swissôtel", "IKEA Aviapark", "Ozon Arena", "ЖК I’m"],
       partners: ["Siemens", "Honeywell", "Legrand", "Interra", "ITC"],
@@ -202,9 +202,9 @@ export const siteCopy = {
       title: "Инженерный интегратор полного цикла.",
       text: "Проектирование, поставка, монтаж, программирование, пусконаладка и сервис инженерных и слаботочных систем.",
       facts: [
-        { value: "15 лет", label: "опыт компании по данным презентации" },
+        { value: "15 лет", label: "опыт компании" },
         { value: "24/7", label: "сервис и мониторинг" },
-        { value: "ISO", label: "сертификации, указанные в презентации" },
+        { value: "ISO", label: "сертификации" },
         { value: "полный цикл", label: "от проекта до эксплуатации" },
       ],
       certifications: ["ISO 9001:2015", "ISO/IEC 27001:2022", "Siemens Solution Partner", "Партнёрские решения Honeywell и Legrand"],

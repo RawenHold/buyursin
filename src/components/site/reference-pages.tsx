@@ -199,8 +199,8 @@ const publicUi = {
     systemEyebrow: "Единый контур", systemTitle: <>Все инженерные системы<br />под вашим контролем</>,
     systemText: "Данные, тревоги и автоматические сценарии объединены в одной панели — без разрозненных пультов и таблиц.",
     systemAll: "Посмотреть все системы", scenario: "Активный сценарий", problem: "Сложность", reaction: "Реакция системы", effect: "Результат",
-    projectEyebrow: "Проекты", projectTitle: <>Решения для объектов<br />разного масштаба</>, projectText: "Нажмите на объект: карточка раскроется и покажет профиль инженерного решения, состав систем и формат работ.", projectAll: "Смотреть все проекты",
-    serviceEyebrow: "Полный цикл", serviceTitle: <>От обследования<br />до сервиса 24/7</>, serviceText: "Одна команда отвечает за проектирование, внедрение, запуск и дальнейшую работоспособность системы.",
+    projectEyebrow: "Проекты", projectTitle: <>Решения для объектов <br />разного масштаба</>, projectText: "Нажмите на объект: карточка раскроется и покажет профиль инженерного решения, состав систем и формат работ.", projectAll: "Смотреть все проекты",
+    serviceEyebrow: "Полный цикл", serviceTitle: <>От обследования <br />до сервиса 24/7</>, serviceText: "Одна команда отвечает за проектирование, внедрение, запуск и дальнейшую работоспособность системы.",
     companyEyebrow: "О компании", companyTitle: "Инженерная экспертиза полного цикла", companyText: "BUYURSIN TECHNICS проектирует, внедряет и обслуживает интеллектуальные системы зданий.", companyMore: "Подробнее о компании", partners: "Технологии мировых производителей",
     contactEyebrow: "Контакты", contactTitle: "Обсудим ваш объект", contactText: "Оставьте контакты и кратко опишите задачу. Заявка придёт ответственному специалисту одним структурированным сообщением.",
     footerText: "Автоматизация, безопасность и эффективная эксплуатация зданий.", footerNav: "Навигация в подвале", discuss: "Обсудить проект",
@@ -436,7 +436,7 @@ function ProjectAccordion({ projects, locale = "ru" }: { projects: readonly Port
 
   const activeTitle = locale === "ru" ? activeProject.title : activeProject.titleUz;
   const labels = locale === "ru"
-    ? { region: "Карусель проектов", type: activeProject.type, profile: "Профиль решения", all: "Проекты", next: "Следующий проект", playing: "Автопрокрутка", pause: "Остановить автопрокрутку", play: "Запустить автопрокрутку", visual: "Архитектурная AI-визуализация. Состав кейса подтверждается перед публикацией." }
+    ? { region: "Карусель проектов", type: activeProject.type, profile: "Профиль решения", all: "Проекты", next: "Следующий проект", playing: "Автопрокрутка", pause: "Остановить автопрокрутку", play: "Запустить автопрокрутку"}
     : { region: "Loyihalar karuseli", type: activeProject.typeUz, profile: "Yechim profili", all: "Loyihalar", next: "Keyingi loyiha", playing: "Avto aylantirish", pause: "Avto aylantirishni to‘xtatish", play: "Avto aylantirishni ishga tushirish", visual: "Arxitektura AI-vizualizatsiyasi. Keys tarkibi nashrdan oldin tasdiqlanadi." };
 
   return <div
@@ -518,7 +518,7 @@ export function ProjectsReferencePage() {
     ["Все проекты","Все проекты","Barcha loyihalar"], ["Бизнес-центры","Бизнес-центры","Biznes markazlari"], ["Банки","Банки","Banklar"], ["Отели","Отели","Mehmonxonalar"], ["Торговые центры","Торговые центры","Savdo markazlari"], ["Спорт","Спорт","Sport"],
   ] as const;
   const shown = filter === "Все проекты" ? projectCards : projectCards.filter(({type}) => type === filter);
-  const benefits = locale === "ru" ? [[Building2,"8+","объектов в презентации"],[Settings2,"Полный цикл","от проекта до сервиса"],[Clock3,"Сервис 24/7","круглосуточная поддержка"],[Globe2,"Мировые вендоры","проверенные технологии"]] : [[Building2,"8+","taqdimotdagi obyektlar"],[Settings2,"To‘liq sikl","loyihadan servisgacha"],[Clock3,"24/7 servis","kecha-yu kunduz yordam"],[Globe2,"Jahon brendlari","sinalgan texnologiyalar"]];
+  const benefits = locale === "ru" ? [[Building2,"8+","объектов"],[Settings2,"Полный цикл","от проекта до сервиса"],[Clock3,"Сервис 24/7","круглосуточная поддержка"],[Globe2,"Мировые вендоры","проверенные технологии"]] : [[Building2,"8+","obyektlar"],[Settings2,"To‘liq sikl","loyihadan servisgacha"],[Clock3,"24/7 servis","kecha-yu kunduz yordam"],[Globe2,"Jahon brendlari","sinalgan texnologiyalar"]];
   return <main><SiteHeader /><section className="subhero"><Image src="/assets/portfolio-bmw.webp" alt={locale === "ru" ? "Современный объект" : "Zamonaviy obyekt"} fill /><div className="site-shell"><h1>{locale === "ru" ? "Проекты, которым доверяют" : "Ishonch bildirilgan loyihalar"}</h1><p>{locale === "ru" ? "Комплексные инженерные решения для коммерческой недвижимости и инфраструктуры." : "Tijorat ko‘chmas mulki va infratuzilma uchun kompleks muhandislik yechimlari."}</p></div></section><div className="site-shell projects-body"><div className="filter-pills">{filters.map(([value,ru,uz]) => <button type="button" key={value} onClick={() => setFilter(value)} className={filter === value ? "active" : ""}>{locale === "ru" ? ru : uz}</button>)}</div><ProjectAccordion projects={shown} locale={locale} /><section className="project-benefits">{benefits.map(([Icon,bold,small]) => <div key={String(bold)}><IconBox icon={Icon as LucideIcon} /><span><strong>{bold as string}</strong><small>{small as string}</small></span></div>)}</section><BlueCta title={locale === "ru" ? "Обсудить ваш проект" : "Loyihangizni muhokama qilamiz"} text={locale === "ru" ? "Расскажите о задачах — наши специалисты подберут оптимальное решение." : "Vazifalarni ayting — mutaxassislarimiz mos yechimni tanlaydi."} button={locale === "ru" ? "Получить консультацию" : "Maslahat olish"} /></div><ReferenceFooter /></main>;
 }
 

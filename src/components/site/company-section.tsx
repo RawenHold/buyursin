@@ -30,7 +30,7 @@ export function CompanySection({ full = false }: { full?: boolean }) {
         </div>
         {full && (
           <div className="mt-8 rounded-[28px] border border-[#e4e7ec] bg-white p-6 sm:p-8">
-            <div className="text-sm font-bold text-[#101828]">{locale === "ru" ? "Статусы и сертификации из презентации" : "Taqdimotdagi status va sertifikatlar"}</div>
+            <div className="text-sm font-bold text-[#101828]">{locale === "ru" ? "Статусы и сертификации" : "Status va sertifikatlar"}</div>
             <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {c.company.certifications.map((item) => <div key={item} className="flex gap-3 rounded-2xl border border-[#e4e7ec] bg-[#f8fafc] p-4 text-sm font-semibold leading-6 text-[#344054]"><Check className="mt-1 h-4 w-4 shrink-0 text-[#22a06b]" />{item}</div>)}
             </div>

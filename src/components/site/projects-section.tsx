@@ -35,7 +35,7 @@ export function ProjectsSection({ full = false }: { full?: boolean }) {
           </div>
 
           <div className="p-6 sm:p-8">
-            <div className="text-xs font-bold uppercase tracking-[.12em] text-[#98a2b3]">{locale === "ru" ? "Объекты из презентации" : "Taqdimotdagi obyektlar"}</div>
+            <div className="text-xs font-bold uppercase tracking-[.12em] text-[#98a2b3]">{locale === "ru" ? "Объекты" : "Taqdimotdagi obyektlar"}</div>
             <div className="mt-5 grid gap-2 sm:grid-cols-2">
               {clients.map((client, index) => {
                 const Icon = projectTypes[index % projectTypes.length];
