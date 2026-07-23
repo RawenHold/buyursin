@@ -15,7 +15,7 @@ const content = {
   uz: {
     solutions: { eyebrow: "Yechimlar", title: <>Muhandislik tizimlari<br />yagona majmua sifatida.</>, text: "Loyihalashdan 24/7 servisgacha. Yechimni tanlang yoki biznes ssenariysidan boshlang." },
     projects: { eyebrow: "Tajriba", title: <>Obyektingizga qo‘llash mumkin<br />bo‘lgan tajriba.</>, text: "Kompaniya taqdimotidagi obyekt va brendlarni ko‘rsatamiz. Batafsil raqamlar tasdiqlangandan keyin beriladi." },
-    company: { eyebrow: "Buyursin Technics", title: <>To‘liq sikl.<br />Bitta mas’ul hamkor.</>, text: "Muhandislik va past tok tizimlarini loyihalaymiz, integratsiya qilamiz, ishga tushiramiz va qo‘llab-quvvatlaymiz." },
+    company: { eyebrow: "Buyursin Technics", title: <>To‘liq sikl.<br />Bitta mas’ul hamkor.</>, text: "Muhandislik va past tokli tizimlarni loyihalaymiz, integratsiya qilamiz, ishga tushiramiz va qo‘llab-quvvatlaymiz." },
     contacts: { eyebrow: "Aloqa", title: <>Obyektingiz vazifasidan<br />boshlaymiz.</>, text: "Samaradorlik hisobi, audit, konsultatsiya yoki tijorat taklifi so‘rovi." },
     calculator: { eyebrow: "Hisob", title: <>Obyektingiz uchun<br />dastlabki hisob.</>, text: "Taxminiy tejash, mos ssenariylar va keyingi qadamni baholang." },
   },

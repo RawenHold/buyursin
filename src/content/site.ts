@@ -228,7 +228,7 @@ export const siteCopy = {
     },
     footer: {
       text: "Автоматизация инженерных и слаботочных систем коммерческих зданий.",
-      internal: "Внутренний конструктор КП",
+      internal: "Сформировать КП",
     },
   },
   uz: {
@@ -240,7 +240,7 @@ export const siteCopy = {
       projects: "Loyihalar",
       company: "Kompaniya",
       contacts: "Aloqa",
-      consultation: "Konsultatsiya olish",
+      consultation: "Maslahat olish",
       menu: "Menyu",
     },
     hero: {
@@ -253,14 +253,14 @@ export const siteCopy = {
       metrics: [
         { value: "30% gacha", label: "energiya xarajatlarini kamaytirish salohiyati" },
         { value: "24/7", label: "muhandislik tizimlari nazorati" },
-        { value: "1–3 yil", label: "taqdimotdagi qoplanish mo‘ljali" },
+        { value: "1–3 yil", label: "taqdimot ma’lumotlariga ko‘ra qoplanish muddati" },
         { value: "15 yil", label: "kompaniya tajribasi" },
       ],
     },
     audience: {
       eyebrow: "Kim uchun",
-      title: "Bitta tizim. Har bir rol uchun alohida qiymat.",
-      subtitle: "Rolingizni tanlang — sayt mos vazifalar, foyda va dalillarni ko‘rsatadi.",
+      title: "Bitta tizim. Har bir rol uchun aniq foyda.",
+      subtitle: "Rolingizni tanlang — sayt sizga mos vazifalar, afzalliklar va dalillarni ko‘rsatadi.",
       labels: {
         owner: "Bino egasi",
         management: "Boshqaruv kompaniyasi",
@@ -269,7 +269,7 @@ export const siteCopy = {
       },
       items: {
         owner: {
-          headline: "Ekspluatatsiya qiymatini nazorat qiling va aktivni himoya qiling.",
+          headline: "Ekspluatatsiya xarajatlarini nazorat qiling va aktivingizni himoya qiling.",
           points: ["Shaffof xarajatlar", "Kamroq xavf", "Investitsiya qarorlari uchun ma’lumot"],
           cta: "Obyekt iqtisodiyotini hisoblash",
         },
@@ -279,7 +279,7 @@ export const siteCopy = {
           cta: "Ekspluatatsiya ssenariylarini ko‘rish",
         },
         developer: {
-          headline: "Binoning boshqaruvini loyiha bosqichidayoq yarating.",
+          headline: "Binoni boshqarish imkoniyatini loyiha bosqichidayoq yarating.",
           points: ["Loyihalash va integratsiya", "Jihozlash va ishga tushirish", "Ekspluatatsiyaga topshirishga tayyorlash"],
           cta: "Loyihani muhokama qilish",
         },
@@ -292,8 +292,8 @@ export const siteCopy = {
     },
     scenario: {
       eyebrow: "Ssenariylar",
-      title: "Nima sodir bo‘lishini va biznesga nima berishini aniq ko‘rsatamiz.",
-      subtitle: "Dekorativ animatsiyasiz: muammo, ish sxemasi, boshqaruv interfeysi va kutiladigan samara.",
+      title: "Nima sodir bo‘layotganini va uning biznes uchun foydasini aniq ko‘rsatamiz.",
+      subtitle: "Muammo, ish jarayoni, boshqaruv interfeysi va kutiladigan natija — ortiqcha bezaksiz.",
       tabs: { energy: "Energiya", climate: "Iqlim", leak: "Oqish", access: "Kirish", fire: "Yong‘in" },
       labels: {
         problem: "Muammo",
@@ -308,29 +308,29 @@ export const siteCopy = {
       },
       items: {
         energy: {
-          problem: "Uskunalar doimiy rejimda ishlaydi va ortiqcha sarf faqat hisob kelgandan keyin bilinadi.",
-          steps: ["Hisoblagichlar va kontrollerlar ma’lumot yig‘adi", "BMS rejim va yuklamani solishtiradi", "Ortiqcha yuklamalar o‘chiriladi yoki ko‘chiriladi"],
+          problem: "Uskunalar qat’iy rejimda ishlaydi, ortiqcha sarf esa faqat hisob kelgandan keyin bilinadi.",
+          steps: ["Hisoblagichlar va kontrollerlar ma’lumot yig‘adi", "BMS rejimlar va yuklamalarni solishtiradi", "Ortiqcha yuklamalar o‘chiriladi yoki boshqa vaqtga ko‘chiriladi"],
           benefits: ["Zonalar bo‘yicha nazorat", "Prognoz qilinadigan budjet", "Ijarachilar bilan ishlash uchun ma’lumot"],
-          dashboard: ["Bugungi sarf", "Bazaviy chiziqdan og‘ish", "Cho‘qqi yuklamalar", "Ssenariylar bo‘yicha tejash"],
+          dashboard: ["Bugungi sarf", "Bazaviy ko‘rsatkichdan og‘ish", "Eng yuqori yuklamalar", "Ssenariylar bo‘yicha tejam"],
           result: "Audit va ssenariy sozlashdan keyin energiya xarajatlarini 30% gacha kamaytirish salohiyati.",
         },
         climate: {
-          problem: "Ventilyatsiya va konditsioner xonalar yuklamasi, harorat va havo sifatini hisobga olmasdan ishlaydi.",
-          steps: ["Datchiklar harorat, namlik va CO₂ ni o‘lchaydi", "Tizim zona rejimini baholaydi", "HVAC quvvati avtomatik o‘zgaradi"],
-          benefits: ["Ijarachilar komforti", "Kamroq shikoyat", "Uskunaga kamroq yuklama"],
+          problem: "Ventilyatsiya va konditsioner tizimlari xonalarning bandligi, harorati va havo sifatini hisobga olmasdan ishlaydi.",
+          steps: ["Datchiklar harorat, namlik va CO₂ ni o‘lchaydi", "Tizim zonaning bandligi va ish rejimini baholaydi", "HVAC quvvati avtomatik o‘zgaradi"],
+          benefits: ["Ijarachilar uchun qulaylik", "Kamroq shikoyat", "Uskunaga kamroq yuklama"],
           dashboard: ["Zonalar harorati", "CO₂ va namlik", "Faol rejimlar", "Og‘ishlar va tavsiyalar"],
           result: "Komfort avtomatik saqlanadi, uskunalar esa faqat kerakli joy va vaqtda ishlaydi.",
         },
         leak: {
           problem: "Sezilmagan suv oqishi pardoz, uskuna va tovarlarga zarar yetkazib, obyekt ishini to‘xtatishi mumkin.",
-          steps: ["Datchik suvni aniqlaydi", "Tizim zona va mas’ullarni belgilaydi", "Avtomatika bo‘lsa suv yopiladi va voqea yoziladi"],
+          steps: ["Datchik suvni aniqlaydi", "Tizim hodisa zonasini aniqlab, mas’ullarga xabar beradi", "Avtomatika mavjud bo‘lsa, suv yopiladi va voqea jurnalga yoziladi"],
           benefits: ["Erta aniqlash", "Tiklash xarajatlarini kamaytirish", "Mulk va uskunani himoya qilish"],
           dashboard: ["Voqea joyi", "Vaqt va datchik", "Reaksiya holati", "Tavsiya etilgan harakat"],
           result: "Muammo zarar ko‘rinib qolgandan keyin emas, paydo bo‘lgan zahoti qayd etiladi.",
         },
         access: {
           problem: "Tarqoq kirish tizimlari xodimlar, pudratchilar, mehmonlar va muhim zonalarni nazorat qilishni qiyinlashtiradi.",
-          steps: ["Tizim foydalanuvchini aniqlaydi", "Huquq va jadvalni tekshiradi", "Kirishni ochadi yoki bloklaydi va voqeani saqlaydi"],
+          steps: ["Tizim foydalanuvchini aniqlaydi", "Kirish huquqi va jadvalni tekshiradi", "Kirishga ruxsat beradi yoki uni bloklaydi va voqeani saqlaydi"],
           benefits: ["Muhim zonalar nazorati", "Tashriflar hisobi", "Yagona kirish tarixi"],
           dashboard: ["Kirish voqealari", "Bloklangan urinishlar", "Foydalanuvchi huquqlari", "Zonalar yuklamasi"],
           result: "Kirish bitta interfeysdan boshqariladi va binoning umumiy xavfsizlik ssenariylariga ulanadi.",
@@ -339,8 +339,8 @@ export const siteCopy = {
           problem: "Avariya paytida voqeani aniqlash bilan birga ogohlantirish, kirish va muhandislik tizimlarini sinxron ishga tushirish muhim.",
           steps: ["Tizim signalni oladi", "Zona va ssenariyni tekshiradi", "Ogohlantirish, eshiklar, ventilyatsiya va dispetcherlik uyg‘un ishlaydi"],
           benefits: ["Tezkor reaksiya", "Tizimlarning uyg‘un ishlashi", "Tahlil uchun voqealar jurnali"],
-          dashboard: ["Signal zonasi", "Faol ssenariy", "Uskuna holati", "Mas’ullar tasdig‘i"],
-          result: "Muhandislik va past tok tizimlari alohida qurilmalar emas, yagona majmua sifatida ishlaydi.",
+          dashboard: ["Xavf zonasi", "Faol ssenariy", "Uskuna holati", "Mas’ullar tasdig‘i"],
+          result: "Muhandislik va past tokli tizimlar alohida qurilmalar emas, yagona majmua sifatida ishlaydi.",
         },
       },
     },
@@ -355,7 +355,7 @@ export const siteCopy = {
     calculator: {
       eyebrow: "Dastlabki hisob",
       title: "Obyektingiz uchun mumkin bo‘lgan samarani baholang.",
-      subtitle: "Hisob mo‘ljal diapazonlardan foydalanadi. Aniq qiymatlar texnik auditdan keyin belgilanadi.",
+      subtitle: "Hisob taxminiy diapazonlarga asoslanadi. Aniq qiymatlar texnik auditdan keyin belgilanadi.",
       role: "Sizning rolingiz",
       objectType: "Obyekt turi",
       area: "Maydon, m²",
@@ -368,10 +368,10 @@ export const siteCopy = {
       resultTitle: "Dastlabki natija",
       annualEffect: "Yillik taxminiy samara",
       savingRange: "Tejash diapazoni",
-      payback: "Ssenariy qoplanish muddati",
+      payback: "Hisobiy qoplanish muddati",
       recommended: "Tavsiya etilgan yechimlar",
-      audit: "Aniq audit buyurtma qilish",
-      disclaimer: "Bu o‘rtacha ko‘rsatkichlar asosidagi mo‘ljal model. Tijorat kafolati emas.",
+      audit: "Aniq hisob uchun audit buyurtma qilish",
+      disclaimer: "Bu o‘rtacha ko‘rsatkichlarga asoslangan taxminiy model. U tijorat kafolati hisoblanmaydi.",
       types: ["Biznes markazi", "Savdo obyekti", "Mehmonxona", "Turar joy majmuasi", "Ombor / ishlab chiqarish", "Boshqa"],
       automationLevels: ["Yagona avtomatlashtirish yo‘q", "Qisman dispetcherlik", "BMS bor, modernizatsiya kerak"],
     },
@@ -383,7 +383,7 @@ export const siteCopy = {
         { id: "bms", title: "BMS", text: "Muhandislik tizimlari, ssenariylar, ogohlantirish va analitikaning yagona boshqaruvi.", points: ["Dispetcherlik", "Ssenariylar", "Hisobotlar"] },
         { id: "metering", title: "ASKUE", text: "Obyekt, zona va ijarachilar bo‘yicha aniq energiya hisobi va balansi.", points: ["Soatlik hisob", "Trendlar", "Limit nazorati"] },
         { id: "hvac", title: "HVAC va iqlim", text: "Ventilyatsiya, isitish va konditsionerni avtomatik boshqarish.", points: ["Harorat", "CO₂", "Rejimlar"] },
-        { id: "light", title: "Yoritish", text: "Jadvallar, mavjudlik datchiklari va umumiy zonalar ssenariylari.", points: ["Avtomatika", "Dimming", "Tejash"] },
+        { id: "light", title: "Yoritish", text: "Jadvallar, mavjudlik datchiklari va umumiy zonalar ssenariylari.", points: ["Avtomatika", "Yorug‘lik darajasini boshqarish", "Tejash"] },
         { id: "water", title: "Suv va oqish", text: "Sarf nazorati, oqish datchiklari va avtomatik harakatlar.", points: ["Erta aniqlash", "Yopish", "Voqealar jurnali"] },
         { id: "fire", title: "Yong‘in xavfsizligi", text: "Yong‘in avtomatikasi, ogohlantirish va muhandislik ssenariylarini integratsiya qilish.", points: ["APS", "SOUE", "Ssenariylar"] },
         { id: "access", title: "Kirish va video", text: "SKUD, videokuzatuv va xavfsizlik voqealarining yagona nazorati.", points: ["Kirish", "Video", "Arxiv"] },
@@ -413,7 +413,7 @@ export const siteCopy = {
     company: {
       eyebrow: "Kompaniya haqida",
       title: "To‘liq siklli muhandislik integratori.",
-      text: "Muhandislik va past tok tizimlarini loyihalash, yetkazib berish, montaj, dasturlash, ishga tushirish va servis.",
+      text: "Muhandislik va past tokli tizimlarni loyihalash, yetkazib berish, montaj qilish, dasturlash, ishga tushirish va ularga xizmat ko‘rsatish.",
       facts: [
         { value: "15 yil", label: "taqdimotdagi kompaniya tajribasi" },
         { value: "24/7", label: "servis va monitoring" },
@@ -425,7 +425,7 @@ export const siteCopy = {
     contact: {
       eyebrow: "Aloqa",
       title: "Obyekt haqida ayting — tushunarli keyingi qadamdan boshlaymiz.",
-      subtitle: "Hisob, texnik audit, konsultatsiya yoki tijorat taklifini buyurtma qilishingiz mumkin.",
+      subtitle: "Hisob-kitob, texnik audit, maslahat yoki tijorat taklifini buyurtma qilishingiz mumkin.",
       phone: "Telefon",
       email: "Email",
       telegram: "Telegram",
@@ -440,8 +440,8 @@ export const siteCopy = {
       fallback: "To‘ldirilgan xat bilan pochta ilovasi ochiladi.",
     },
     footer: {
-      text: "Tijorat binolarining muhandislik va past tok tizimlarini avtomatlashtirish.",
-      internal: "Ichki TK konstruktori",
+      text: "Tijorat binolarining muhandislik va past tokli tizimlarini avtomatlashtirish.",
+      internal: "Tijorat taklifini yaratish",
     },
   },
 } as const;

@@ -49,10 +49,12 @@ export function LeadForm() {
         <label className="field-label sm:col-span-2"><span>{c.contact.contactField}</span><input name="contact" required className="field-control" /></label>
         <label className="field-label sm:col-span-2"><span>{c.contact.message}</span><textarea name="message" required rows={5} className="field-control resize-none" /></label>
       </div>
-      <button type="submit" disabled={state === "sending"} className="button-primary mt-5 w-full justify-center disabled:cursor-not-allowed disabled:opacity-60">
-        {state === "sending" ? <Loader2 className="h-4 w-4 animate-spin" /> : state === "success" ? <CheckCircle2 className="h-4 w-4" /> : null}
-        {state === "sending" ? c.contact.sending : state === "success" ? c.contact.success : c.contact.submit}
-        {state === "idle" && <ArrowRight className="h-4 w-4" />}
+      <button type="submit" disabled={state === "sending"} className="button-primary mt-5 w-full justify-center disabled:cursor-not-allowed disabled:opacity-60" data-label={state === "sending" ? c.contact.sending : state === "success" ? c.contact.success : c.contact.submit}>
+        <span className="button-label">
+          {state === "sending" ? <Loader2 className="h-4 w-4 animate-spin" /> : state === "success" ? <CheckCircle2 className="h-4 w-4" /> : null}
+          {state === "sending" ? c.contact.sending : state === "success" ? c.contact.success : c.contact.submit}
+          {state === "idle" && <ArrowRight className="h-4 w-4" />}
+        </span>
       </button>
       {state === "fallback" && <p className="mt-3 text-xs leading-5 text-[#667085]">{c.contact.fallback}</p>}
     </form>

@@ -6,6 +6,7 @@ import { ArrowLeft, Check, FileDown, Languages, LoaderCircle, Presentation, Uplo
 import { useI18n } from "@/modules/i18n";
 import { defaultProposal, proposalModules } from "./defaults";
 import { exportProposalPdf, exportProposalPptx } from "./export";
+import { proposalLimits } from "./model";
 import { SlideDeck } from "./slide-deck";
 import type { ProposalData, ProposalModuleId } from "./types";
 
@@ -44,7 +45,13 @@ export function ProposalBuilder() {
   }, []);
 
   useEffect(() => {
-    window.localStorage.setItem("buyursin-proposal", JSON.stringify(data));
+    try {
+      window.localStorage.setItem("buyursin-proposal", JSON.stringify({
+        ...data,
+        logoDataUrl: undefined,
+        objectPhotoDataUrl: undefined,
+      }));
+    } catch { /* local storage can be unavailable or full */ }
   }, [data]);
 
   const patch = <K extends keyof ProposalData>(key: K, value: ProposalData[K]) => setData((current) => ({ ...current, [key]: value }));
@@ -58,11 +65,11 @@ export function ProposalBuilder() {
     }));
   };
 
-  const handleLogo = (file?: File) => {
+  const handleImage = (key: "logoDataUrl" | "objectPhotoDataUrl", file?: File) => {
     if (!file) return;
     if (!file.type.startsWith("image/")) return;
     const reader = new FileReader();
-    reader.onload = () => patch("logoDataUrl", String(reader.result));
+    reader.onload = () => patch(key, String(reader.result));
     reader.readAsDataURL(file);
   };
 
@@ -72,7 +79,7 @@ export function ProposalBuilder() {
     try {
       const name = `${data.client || "client"}-${data.objectName || "proposal"}`.replace(/[^a-zA-Z0-9а-яА-ЯёЁ_-]+/g, "-").toLowerCase();
       if (type === "pdf") await exportProposalPdf(deckRef.current, name);
-      else await exportProposalPptx(deckRef.current, name);
+      else await exportProposalPptx(data, locale, name);
     } finally {
       setExporting(null);
     }
@@ -109,14 +116,18 @@ export function ProposalBuilder() {
           <div className="grid gap-4">
             <div className="grid grid-cols-2 gap-3">
               <Field label={t("proposal.form.client")}>
-                <input value={data.client} onChange={(e) => patch("client", e.target.value)} className="w-full rounded-xl border border-[var(--line)] bg-white px-3 py-2.5 text-sm font-semibold outline-none focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent-soft)]" />
+                <input maxLength={proposalLimits.client} value={data.client} onChange={(e) => patch("client", e.target.value)} className="w-full rounded-xl border border-[var(--line)] bg-white px-3 py-2.5 text-sm font-semibold outline-none focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent-soft)]" />
               </Field>
               <Field label={t("proposal.form.object")}>
-                <input value={data.objectName} onChange={(e) => patch("objectName", e.target.value)} className="w-full rounded-xl border border-[var(--line)] bg-white px-3 py-2.5 text-sm font-semibold outline-none focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent-soft)]" />
+                <input maxLength={proposalLimits.objectName} value={data.objectName} onChange={(e) => patch("objectName", e.target.value)} className="w-full rounded-xl border border-[var(--line)] bg-white px-3 py-2.5 text-sm font-semibold outline-none focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent-soft)]" />
               </Field>
             </div>
             <Field label={t("proposal.form.type")}>
-              <input value={data.objectType} onChange={(e) => patch("objectType", e.target.value)} className="w-full rounded-xl border border-[var(--line)] bg-white px-3 py-2.5 text-sm font-semibold outline-none focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent-soft)]" />
+              <input maxLength={proposalLimits.objectType} value={data.objectType} onChange={(e) => patch("objectType", e.target.value)} className="w-full rounded-xl border border-[var(--line)] bg-white px-3 py-2.5 text-sm font-semibold outline-none focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent-soft)]" />
+            </Field>
+            <Field label={t("proposal.form.offer")}>
+              <textarea maxLength={proposalLimits.offerDescription} value={data.offerDescription} placeholder={t("proposal.form.offer.placeholder")} onChange={(e) => patch("offerDescription", e.target.value)} rows={4} className="w-full resize-y rounded-xl border border-[var(--line)] bg-white px-3 py-2.5 text-sm font-semibold leading-5 outline-none focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent-soft)]" />
+              <span className="mt-1 block text-right text-[10px] font-bold text-[var(--muted)]">{data.offerDescription.length}/{proposalLimits.offerDescription}</span>
             </Field>
             <div className="grid grid-cols-2 gap-3">
               <Field label={t("proposal.form.area")}><NumberInput value={data.area} onChange={(value) => patch("area", value)} /></Field>
@@ -138,8 +149,22 @@ export function ProposalBuilder() {
             <Field label={t("proposal.form.logo")}>
               <label className="pressable flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-[var(--line)] bg-[var(--background)] px-3 py-3 text-xs font-black text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--accent)]">
                 <Upload className="h-4 w-4" /> PNG / JPG / SVG
-                <input type="file" accept="image/*" className="hidden" onChange={(e) => handleLogo(e.target.files?.[0])} />
+                <input type="file" accept="image/*" className="hidden" onChange={(e) => handleImage("logoDataUrl", e.target.files?.[0])} />
               </label>
+            </Field>
+            <Field label={t("proposal.form.photo")}>
+              <label className="pressable flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-[var(--line)] bg-[var(--background)] px-3 py-3 text-xs font-black text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--accent)]">
+                <Upload className="h-4 w-4" /> PNG / JPG
+                <input type="file" accept="image/png,image/jpeg,image/webp" className="hidden" onChange={(e) => handleImage("objectPhotoDataUrl", e.target.files?.[0])} />
+              </label>
+            </Field>
+            <Field label={t("proposal.form.priceNote")}>
+              <textarea maxLength={proposalLimits.priceNote} value={data.priceNote} placeholder={t("proposal.form.priceNote.placeholder")} onChange={(e) => patch("priceNote", e.target.value)} rows={3} className="w-full resize-y rounded-xl border border-[var(--line)] bg-white px-3 py-2.5 text-sm font-semibold leading-5 outline-none focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent-soft)]" />
+              <span className="mt-1 block text-right text-[10px] font-bold text-[var(--muted)]">{data.priceNote.length}/{proposalLimits.priceNote}</span>
+            </Field>
+            <Field label={t("proposal.form.cta")}>
+              <textarea maxLength={proposalLimits.ctaText} value={data.ctaText} placeholder={t("proposal.form.cta.placeholder")} onChange={(e) => patch("ctaText", e.target.value)} rows={2} className="w-full resize-y rounded-xl border border-[var(--line)] bg-white px-3 py-2.5 text-sm font-semibold leading-5 outline-none focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent-soft)]" />
+              <span className="mt-1 block text-right text-[10px] font-bold text-[var(--muted)]">{data.ctaText.length}/{proposalLimits.ctaText}</span>
             </Field>
             <Field label={t("proposal.form.modules")}>
               <div className="grid grid-cols-2 gap-2">

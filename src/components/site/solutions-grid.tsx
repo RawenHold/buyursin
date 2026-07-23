@@ -76,8 +76,8 @@ export function SolutionsGrid({ full = false }: { full?: boolean }) {
               ))}
             </div>
             <div className="mt-7 flex flex-wrap gap-3">
-              <Link href="/contacts#lead" className="button-primary">{c.nav.consultation}<ArrowRight className="h-4 w-4" /></Link>
-              {!full && <Link href="/solutions" className="button-secondary">{c.nav.solutions}<ArrowRight className="h-4 w-4" /></Link>}
+              <Link href="/contacts#lead" className="button-primary" data-label={c.nav.consultation}><span className="button-label">{c.nav.consultation}<ArrowRight className="h-4 w-4" /></span></Link>
+              {!full && <Link href="/solutions" className="button-secondary" data-label={c.nav.solutions}><span className="button-label">{c.nav.solutions}<ArrowRight className="h-4 w-4" /></span></Link>}
             </div>
           </div>
         </div>

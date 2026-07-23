@@ -1,6 +1,19 @@
 import type { Metadata } from "next";
+import { Geologica, Onest } from "next/font/google";
 import "./globals.css";
 import { I18nProvider } from "@/modules/i18n";
+
+const geologica = Geologica({
+  subsets: ["cyrillic", "latin"],
+  variable: "--font-geologica",
+  display: "swap",
+});
+
+const onest = Onest({
+  subsets: ["cyrillic", "latin"],
+  variable: "--font-onest",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://btechnics.uz"),
@@ -15,5 +28,9 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="ru"><body><I18nProvider>{children}</I18nProvider></body></html>;
+  return (
+    <html lang="ru" className={`${geologica.variable} ${onest.variable}`}>
+      <body><I18nProvider>{children}</I18nProvider></body>
+    </html>
+  );
 }

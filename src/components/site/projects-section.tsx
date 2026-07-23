@@ -50,7 +50,7 @@ export function ProjectsSection({ full = false }: { full?: boolean }) {
             <div className="mt-5 rounded-[16px] border border-[#d6e4ff] bg-[#f4f7ff] p-4">
               <div className="flex gap-3 text-sm font-semibold leading-6 text-[#344054]"><Check className="mt-1 h-4 w-4 shrink-0 text-[#22a06b]" />{locale === "ru" ? "Состав работ и измеримые результаты по каждому объекту уточняются перед публикацией кейса." : "Har bir obyekt bo‘yicha ish tarkibi va natijalar keys e’lon qilinishidan oldin aniqlashtiriladi."}</div>
             </div>
-            <Link href="/contacts#lead" className="button-primary mt-6">{c.projects.cta}<ArrowRight className="h-4 w-4" /></Link>
+            <Link href="/contacts#lead" className="button-primary mt-6" data-label={c.projects.cta}><span className="button-label">{c.projects.cta}<ArrowRight className="h-4 w-4" /></span></Link>
           </div>
         </div>
 
@@ -62,7 +62,7 @@ export function ProjectsSection({ full = false }: { full?: boolean }) {
                 {c.projects.partners.map((partner) => <span key={partner} className="rounded-xl border border-[#e4e7ec] bg-[#f8fafc] px-4 py-3 text-sm font-bold text-[#344054]">{partner}</span>)}
               </div>
             </div>
-            <Link href="/projects" className="button-secondary">{locale === "ru" ? "Все проекты" : "Barcha loyihalar"}<ArrowRight className="h-4 w-4" /></Link>
+            <Link href="/projects" className="button-secondary" data-label={locale === "ru" ? "Все проекты" : "Barcha loyihalar"}><span className="button-label">{locale === "ru" ? "Все проекты" : "Barcha loyihalar"}<ArrowRight className="h-4 w-4" /></span></Link>
           </div>
         </div>
       </div>

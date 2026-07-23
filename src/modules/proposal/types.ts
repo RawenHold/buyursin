@@ -4,6 +4,9 @@ export type ProposalData = {
   client: string;
   objectName: string;
   objectType: string;
+  offerDescription: string;
+  priceNote: string;
+  ctaText: string;
   area: number;
   monthlyEnergy: number;
   monthlyOps: number;
@@ -12,5 +15,6 @@ export type ProposalData = {
   currency: "UZS" | "USD";
   accent: string;
   logoDataUrl?: string;
+  objectPhotoDataUrl?: string;
   modules: ProposalModuleId[];
 };
