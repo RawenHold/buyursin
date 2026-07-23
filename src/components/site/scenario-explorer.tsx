@@ -214,7 +214,7 @@ export function ScenarioExplorer({ compact = false }: { compact?: boolean }) {
                   </div>
                 ))}
               </div>
-              <Link href={`/calculator?scenario=${active}`} className="button-primary mt-5 w-full justify-center">{c.scenario.labels.action}<ArrowRight className="h-4 w-4" /></Link>
+              <Link href={`/calculator?scenario=${active}`} className="button-primary mt-5 w-full justify-center" data-label={c.scenario.labels.action}><span className="button-label">{c.scenario.labels.action}<ArrowRight className="h-4 w-4" /></span></Link>
             </article>
           </div>
         </div>

@@ -38,7 +38,7 @@ export default function ProposalLoginPage() {
         <form onSubmit={submit} className="mt-7">
           <label className="field-label"><span>Код доступа</span><input name="code" type="password" required autoComplete="current-password" className="field-control" /></label>
           {error && <p className="mt-3 text-sm leading-6 text-[#b42318]">{error}</p>}
-          <button type="submit" disabled={loading} className="button-primary mt-5 w-full justify-center disabled:opacity-60">{loading && <Loader2 className="h-4 w-4 animate-spin" />}Войти</button>
+          <button type="submit" disabled={loading} className="button-primary mt-5 w-full justify-center disabled:opacity-60" data-label={loading ? "Проверяем…" : "Войти"}><span className="button-label">{loading && <Loader2 className="h-4 w-4 animate-spin" />}{loading ? "Проверяем…" : "Войти"}</span></button>
         </form>
         <Link href="/" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#667085] hover:text-[#1769ff]"><ArrowLeft className="h-4 w-4" />На сайт</Link>
       </div>

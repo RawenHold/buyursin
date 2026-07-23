@@ -16,7 +16,7 @@ export function CompanySection({ full = false }: { full?: boolean }) {
             <span className="section-eyebrow">{c.company.eyebrow}</span>
             <h2 className="mt-5 text-4xl font-semibold tracking-[-.045em] text-[#101828] sm:text-5xl">{c.company.title}</h2>
             <p className="mt-5 max-w-xl text-base leading-7 text-[#667085]">{c.company.text}</p>
-            <Link href="/company" className="button-secondary mt-7">{c.nav.company}<ArrowRight className="h-4 w-4" /></Link>
+            <Link href="/company" className="button-secondary mt-7" data-label={c.nav.company}><span className="button-label">{c.nav.company}<ArrowRight className="h-4 w-4" /></span></Link>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             {c.company.facts.map((fact, index) => (

@@ -228,7 +228,7 @@ export const siteCopy = {
     },
     footer: {
       text: "Автоматизация инженерных и слаботочных систем коммерческих зданий.",
-      internal: "Внутренний конструктор КП",
+      internal: "Сформировать КП",
     },
   },
   uz: {
@@ -441,7 +441,7 @@ export const siteCopy = {
     },
     footer: {
       text: "Tijorat binolarining muhandislik va past tok tizimlarini avtomatlashtirish.",
-      internal: "Ichki TK konstruktori",
+      internal: "TK shakllantirish",
     },
   },
 } as const;

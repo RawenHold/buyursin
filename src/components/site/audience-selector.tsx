@@ -67,7 +67,7 @@ export function AudienceSelector() {
           <div className="border-b border-[#e4e7ec] p-6 sm:p-8 lg:border-b-0 lg:border-r">
             <div className="inline-flex rounded-full border border-[#d6e4ff] bg-white px-3 py-1.5 text-xs font-bold text-[#1769ff]">{c.audience.labels[active]}</div>
             <h3 className="mt-5 max-w-2xl text-3xl font-semibold tracking-[-.04em] text-[#101828] sm:text-4xl">{selected.headline}</h3>
-            <Link href={href} className="button-primary mt-7">{selected.cta}<ArrowRight className="h-4 w-4" /></Link>
+            <Link href={href} className="button-primary mt-7" data-label={selected.cta}><span className="button-label">{selected.cta}<ArrowRight className="h-4 w-4" /></span></Link>
           </div>
           <div className="grid gap-px bg-[#e4e7ec] sm:grid-cols-3">
             {selected.points.map((point) => (

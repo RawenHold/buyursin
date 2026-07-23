@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, Mail, Phone } from "lucide-react";
+import { ArrowUpRight, Mail, Phone, Presentation } from "lucide-react";
 import { Brand } from "@/components/shared/brand";
 import { CONTACTS, copyFor } from "@/content/site";
 import { useI18n } from "@/modules/i18n";
@@ -37,7 +37,9 @@ export function SiteFooter() {
       <div className="border-t border-[#e4e7ec]">
         <div className="site-shell flex flex-wrap items-center justify-between gap-3 py-5 text-xs text-[#98a2b3]">
           <span>© {new Date().getFullYear()} Buyursin Technics</span>
-          <Link href="/admin/proposal" className="hover:text-[#475467]">{c.footer.internal}</Link>
+          <Link href="/proposal" className="button-primary min-h-11 px-4" data-label={c.footer.internal} aria-label={c.footer.internal}>
+            <span className="button-label"><Presentation aria-hidden="true" className="h-4 w-4" />{c.footer.internal}</span>
+          </Link>
         </div>
       </div>
     </footer>
